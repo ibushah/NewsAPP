@@ -7,6 +7,13 @@ let mainDiv=document.getElementById("mainDiv");
 
 window.addEventListener("load", async ()=>
 {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('../sw.js')
+            .then(() => {
+                console.log('service worker')
+            })
+    }
+
      await lister();
      await updatenews(drop_val[0].id)
      drop_val.addEventListener("change",async ()=>
